@@ -10,16 +10,17 @@ import {
 export default (state = {}, action) => {
   switch (action.type) {
     case FETCH_STREAMS:
-      // mapKeys maps list to object - id is key for each list object
-      // ES6 syntax - ... gets all key/value pairs out of object
+      // mapKeys maps API list to object - id attr is key for each list object
+      // allows easy manipulation with ES6
       return { ...state, ..._.mapKeys(action.payload, "id") };
     case FETCH_STREAM:
-      // ES6 syntax - copy object with new key/value pair
+      // ES6 syntax - ... gets all key/value pairs out of object
       return { ...state, [action.payload.id]: action.payload };
     case CREATE_STREAM:
-      // Redux always gets new state object
+      // ES6 syntax - copy object with new key/value pair
       return { ...state, [action.payload.id]: action.payload };
     case EDIT_STREAM:
+      // ES6 syntax - Redux always gets new state object
       return { ...state, [action.payload.id]: action.payload };
     case DELETE_STREAM:
       // payload is stream id to be deleted, omit returns new object
