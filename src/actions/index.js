@@ -25,8 +25,11 @@ export const signOut = () => {
 // RESTful API Conventions
 // asynchronous action creators for redux-thunk
 
-export const createStream = formValues => async dispatch => {
-  const response = await streams.post("/streams", formValues);
+export const createStream = formValues => async (dispatch, getState) => {
+  // get user id from auth state object
+  const { userId } = getState().auth;
+  // pass it with form values
+  const response = await streams.post("/streams", { ...formValues, userId });
 
   dispatch({ type: CREATE_STREAM, payload: response.data });
 };
