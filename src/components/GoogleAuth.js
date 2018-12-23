@@ -4,8 +4,9 @@ import { signIn, signOut } from "../actions";
 
 class GoogleAuth extends React.Component {
   componentDidMount() {
-    // load gapi auth2 client functions
+    // load gapi auth2 client functions from window scope
     window.gapi.load("client:auth2", () => {
+      // gapi client functions ready
       window.gapi.client
         .init({
           clientId:
@@ -13,7 +14,7 @@ class GoogleAuth extends React.Component {
           scope: "email"
         })
         .then(() => {
-          // get auth instance from window scope
+          // get auth instance
           this.auth = window.gapi.auth2.getAuthInstance();
           this.onAuthChange(this.auth.isSignedIn.get());
           // listen callbacks to onAuthChange whenever isSignedIn changes
@@ -26,14 +27,14 @@ class GoogleAuth extends React.Component {
   // arrow functions bind context to component - for callbacks
   onAuthChange = isSignedIn => {
     if (isSignedIn) {
-      this.props.signIn();
+      this.props.signIn(this.auth.currentUser.get().getId());
     } else {
       this.props.signOut();
     }
   };
 
   onSignInClick = () => {
-    this.auth.signIn();
+    this.auth.signIn({ prompt: "select_account" });
   };
 
   onSignOutClick = () => {
