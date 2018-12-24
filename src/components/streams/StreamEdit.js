@@ -10,7 +10,7 @@ class StreamEdit extends React.Component {
   }
 
   onSubmit = formValues => {
-    console.log(formValues);
+    this.props.editStream(this.props.match.params.id, formValues);
   };
 
   render() {
@@ -23,7 +23,7 @@ class StreamEdit extends React.Component {
         <StreamForm
           // ReduxForm prop initialValues is passed to child forms as values
           // keys come from Field names of child form
-          // pick returns new object with only specific keys
+          // pick returns new object with only specific keys (to be edited)
           initialValues={_.pick(this.props.stream, "title", "description")}
           onSubmit={this.onSubmit}
         />
