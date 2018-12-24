@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import history from "../history";
 
 const Modal = props => {
   // portal will insert/render JSX inside the DOM object referenced
   return ReactDOM.createPortal(
     <div
       // dimmer click redirects to root page
-      onClick={() => history.push("/")}
+      onClick={props.onDismiss}
       className="ui dimmer modals visible active"
     >
       <div
