@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React from "react";
 import { connect } from "react-redux";
 import { fetchStream, editStream } from "../../actions";
@@ -22,7 +23,8 @@ class StreamEdit extends React.Component {
         <StreamForm
           // ReduxForm prop initialValues is passed to child forms as values
           // keys come from Field names of child form
-          initialValues={this.props.stream}
+          // pick returns new object with only specific keys
+          initialValues={_.pick(this.props.stream, "title", "description")}
           onSubmit={this.onSubmit}
         />
       </div>
