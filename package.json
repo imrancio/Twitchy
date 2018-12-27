@@ -1,0 +1,14 @@
+{
+  "name": "twitchy",
+  "version": "1.0.0",
+  "description": "Twitchy streaming service",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm start --prefix apiserver\" \"npm start --prefix rtmpserver\" \"npm start --prefix client\""
+  },
+  "author": "Imran Chowdhury",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
