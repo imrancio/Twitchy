@@ -1,0 +1,14 @@
+{
+  "name": "apiserver",
+  "version": "1.0.0",
+  "description": "API server for Twitchy client",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server -p 3001 -w db.json"
+  },
+  "author": "Imran Chowdhury",
+  "license": "MIT",
+  "dependencies": {
+    "json-server": "^0.14.0"
+  }
+}

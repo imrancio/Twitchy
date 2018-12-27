@@ -1,0 +1,14 @@
+{
+  "name": "rtmpserver",
+  "version": "1.0.0",
+  "description": "RTMP server for Twitchy",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Imran Chowdhury",
+  "license": "MIT",
+  "dependencies": {
+    "node-media-server": "^1.4.8"
+  }
+}
